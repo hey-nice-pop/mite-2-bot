@@ -10,8 +10,8 @@ import toolModule.news as news
 import toolModule.wiki as wiki
 #weather
 import toolModule.weather as weather
-#voice
-import toolModule.voice as voice
+
+import automodModule.automod as automod
 
 YOUR_BOT_TOKEN = config.BOT_TOKEN
 
@@ -23,7 +23,7 @@ bot = commands.Bot(
     command_prefix='/', 
     intents=intents, 
     sync_commands=True,
-    activity=discord.Game("見て")
+    activity=discord.Game("mite*2")
 )
 
 @bot.event
@@ -33,19 +33,19 @@ async def on_ready():
 
 
 minesweeper.setup(bot)
-
 news.setup(bot)
-
 wiki.setup(bot)
-
 weather.setup(bot)
-
-voice.setup(bot)
 
 @bot.event
 async def on_message(message):
     if message.author.bot:
         return
+
+    # 自動制御（50文字以上の場合、削除と警告を実施）
+    moderated = await automod.check_message(message)
+    if moderated:
+        return  # 自動制御に該当した場合は、以降のコマンド処理をスキップ
 
     # 他のコマンドも処理
     await bot.process_commands(message)

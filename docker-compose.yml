@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: stone
+    container_name: mite
     working_dir: /app  # /app 配下で作業を行う
     volumes:
       - ./app:/app  # ホストの app ディレクトリをコンテナ内の /app にマウント
