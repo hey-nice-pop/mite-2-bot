@@ -1,0 +1,9 @@
+discord
+wikipedia
+requests
+beautifulsoup4
+python-dotenv
+soundfile
+pyopenjtalk
+emoji
+pydub
