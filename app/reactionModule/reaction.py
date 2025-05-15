@@ -13,8 +13,8 @@ class ReportCog(commands.Cog):
             if payload.member is None:
                 print("payload.member が None のため処理をスキップ (DM等)")
                 return
+            #botによるリアクションはスキップ
             if payload.member.bot:
-                print("Botによるリアクションのためスキップ")
                 return
 
             # configから通報用のリアクション名を取得

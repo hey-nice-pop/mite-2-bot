@@ -17,8 +17,8 @@ async def check_message(message: discord.Message) -> bool:
     警告処理を行った場合は True を返します。
     """
     # ギルド内で管理者権限を持つユーザーの場合はスキップ
-    #if message.guild is not None and message.author.guild_permissions.administrator:
-    #    return False
+    if message.guild is not None and message.author.guild_permissions.administrator:
+        return False
 
     # URLを除去して残りの文字列を取得（URLは "http://" または "https://" 以降の連続する非空白文字）
     effective_content = re.sub(r'https?://\S+', '', message.content).strip()
